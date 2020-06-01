@@ -38,7 +38,7 @@ function getMax(durum){
     return 1;
 }
 
-var epsilon=0.8;
+var epsilon=0.7;
 var ogrenme=0.7;
 var gamma=0.8;
 var farkX;
@@ -64,7 +64,7 @@ function train(){
       }
       else{
         Odul=Uzunluk-farkY;
-       
+
       }
       if (kus.jumpspeed!=0)
         kus.jumper();
@@ -83,7 +83,19 @@ function train(){
   }
 }
 function Reward(Odul){
-  Qtable[farkX][farkY][action]=Odul+ogrenme*
+
+  let newX;
+  if (farkX-engelhız>-100) //yani actiondan sonra borudan geçmiyorsa, borudan geçse yeni FarkX bir sonraki boru ile aradaki mesafe kadar olur
+    newX=farkX-engelhız;
+  else
+    nex=300;
+  let newY;
+  if(action==1) // zıplama yaptıysa yeni Y maksimum zıpladıgı yer, aksi halde kusun düşüş hızı
+    newY=farkY+maxH;
+  else
+    newY=farkY+kus.vel;
+
+  Qtable[farkX][farkY][action]=Odul+ogrenme*getMax(Qtable[newX][newY]);
 }
 
 anychart.onDocumentReady(function () {
