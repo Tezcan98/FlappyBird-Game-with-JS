@@ -48,7 +48,7 @@ class Player{
     soundFlag1=playOneTime(hit,soundFlag1)
     //engelhız=0;
 
-    Reward(-10*Uzunluk);
+    //Reward(-100*Uzunluk);
     this.jumpspeed=0;
     this.vel=0;
     this.jumpspeed=15;
@@ -121,7 +121,7 @@ class Engel{
         puan++; // aradan geçesiye loopa 22 kez giriyor sonuç için 22ye bolucez
         if (puan>best)
           best=puan;
-        Reward(Genislik*100);
+        //Reward(Uzunluk*1000);
         soundFlag2=playOneTime(point,soundFlag2);
       }
       else
@@ -174,24 +174,33 @@ function gameLoop()
 
 var oyun=setInterval(gameLoop, 0.003);
 
-var oyun2=setInterval(gameLoop, 0.003);
-var oyun3=setInterval(gameLoop, 0.0003);
+var oyun2=setInterval(gameLoop, 0.0003);
+var oyun3=setInterval(gameLoop, 0.00003);
+var oyun4;
+var oyun5;
+var oyun6;
 var yavasF=false;
 function yavas(){
 
      clearInterval(oyun);
      if(yavasF){
-       oyun=setInterval(gameLoop, 0.0000001);
-       oyun2=setInterval(gameLoop, 0.003);
-       oyun3=setInterval(gameLoop, 0.0003);
+       oyun=setInterval(gameLoop, 0.00003);
+       oyun2=setInterval(gameLoop, 0.0003);
+       oyun3=setInterval(gameLoop, 0.00003);
+         oyun4=setInterval(gameLoop, 0.00003);
+         oyun5=setInterval(gameLoop, 0.0003);
+         oyun6=setInterval(gameLoop, 0.00003);
 
        yavasF=false;
      }
      else{
+
+       clearInterval(oyun6);
+       clearInterval(oyun5);
+       clearInterval(oyun4);
        clearInterval(oyun3);
        clearInterval(oyun2);
-
-       oyun=setInterval(gameLoop, 25);
+       oyun=setInterval(gameLoop, 20);
        yavasF=true;
      }
 }
