@@ -164,7 +164,7 @@ function gameLoop()
   engel2.update();
   engel3.update();
   kus.update();
-  train();
+  //train();
 
   ctx.fillStyle= '#000';
   ctx.font = "20px Arial";
@@ -172,34 +172,17 @@ function gameLoop()
 
 }
 
-var oyun=setInterval(gameLoop, 0.003);
-
-var oyun2=setInterval(gameLoop, 0.0003);
-var oyun3=setInterval(gameLoop, 0.00003);
-var oyun4;
-var oyun5;
-var oyun6;
+var oyun=setInterval(gameLoop, 0.3);
+ 
 var yavasF=false;
 function yavas(){
 
      clearInterval(oyun);
      if(yavasF){
-       oyun=setInterval(gameLoop, 0.00003);
-       oyun2=setInterval(gameLoop, 0.0003);
-       oyun3=setInterval(gameLoop, 0.00003);
-         oyun4=setInterval(gameLoop, 0.00003);
-         oyun5=setInterval(gameLoop, 0.0003);
-         oyun6=setInterval(gameLoop, 0.00003);
-
+       oyun=setInterval(gameLoop, 0.3); 
        yavasF=false;
      }
-     else{
-
-       clearInterval(oyun6);
-       clearInterval(oyun5);
-       clearInterval(oyun4);
-       clearInterval(oyun3);
-       clearInterval(oyun2);
+     else{ 
        oyun=setInterval(gameLoop, 20);
        yavasF=true;
      }
